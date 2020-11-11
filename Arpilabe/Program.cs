@@ -1,11 +1,10 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Arpilabe.Data;
+
 
 namespace Arpilabe
 {
@@ -13,7 +12,9 @@ namespace Arpilabe
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+            SeedDatabase(host);
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -22,5 +23,30 @@ namespace Arpilabe
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        // Mise à jour DataBase
+        private static void SeedDatabase(IHost host)
+
+        {
+            var scopeFactory = host.Services.GetRequiredService<IServiceScopeFactory>();
+            using var scope = scopeFactory.CreateScope();
+            var context = scope.ServiceProvider.GetRequiredService<ArpilabeContext>();
+
+            if (context.Database.EnsureCreated())
+            {
+                try
+                {
+                    SeedData.Initialize(context);
+                }
+                catch (Exception ex)
+                {
+                    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "A database seeding error occurred.");
+                }
+
+
+
+            }
+        }
     }
 }

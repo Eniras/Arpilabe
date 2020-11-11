@@ -7,13 +7,14 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Runtime.ExceptionServices;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace Arpilabe.Models
 {
     public class Person
     {
         public String FirstName { get; set; }
 
-        [Required]
+        [Key]
         public string LastName { get; set; }
 
         [Required]
