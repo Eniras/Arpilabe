@@ -11,7 +11,7 @@ namespace Arpilabe.Data
     //Creation acces base de données mémoire
         public class ArpilabeContext : DbContext
         {
-            public ArpilabeContext(DbContextOptions<ArpilabeContext> options)
+            public ArpilabeContext(DbContextOptions options)
                 : base(options)
             {
             }
