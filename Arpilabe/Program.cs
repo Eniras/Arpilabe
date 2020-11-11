@@ -6,23 +6,28 @@ using System;
 using Arpilabe.Data;
 
 
+
 namespace Arpilabe
 {
     public class Program
     {
         public static void Main(string[] args)
+
         {
-            var host = CreateHostBuilder(args).Build();
+
+        var host = CreateHostBuilder(args).Build();
             SeedDatabase(host);
             host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+                Host.CreateDefaultBuilder(args)
+             .ConfigureWebHostDefaults(webBuilder =>
+             {
+                 webBuilder.UseStartup<Startup>();
+             });
+
+       
 
         // Mise à jour DataBase
         private static void SeedDatabase(IHost host)
