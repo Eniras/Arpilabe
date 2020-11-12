@@ -1,4 +1,4 @@
-﻿const uri = 'api/TodoItems';
+﻿const uri = 'api/People';
 let todos = [];
 
 function getItems() {
@@ -9,11 +9,19 @@ function getItems() {
 }
 
 function addItem() {
-    const addNameTextbox = document.getElementById('add-name');
+    const FirstNameTextbox = document.getElementById('FirstName');
+    const LastNameTextbox = document.getElementById('LastName');
+    const MailTextbox = document.getElementById('Mail');
+    const PhoneTextbox = document.getElementById('Phone');
+    const DepartmentTextbox = document.getElementById('Department');
 
     const item = {
-        isComplete: false,
-        name: addNameTextbox.value.trim()
+        FirstName: FirstNameTextbox.value.trim(),
+        LastName: LastNameTextbox.value.trim(),
+        Email: MailTextbox.value.trim(),
+        Phone: PhoneTextbox.value.trim(),
+        Departement: DepartmentTextbox.value.trim(),
+        Note: ""
     };
 
     fetch(uri, {
@@ -27,7 +35,11 @@ function addItem() {
         .then(response => response.json())
         .then(() => {
             getItems();
-            addNameTextbox.value = '';
+            FirstNameTextbox.value = '';
+            LastNameTextbox.value = '';
+            MailTextbox.value = '';
+            PhoneTextbox.value = '';
+            DepartmentTextbox.value = '';
         })
         .catch(error => console.error('Unable to add item.', error));
 }
@@ -41,10 +53,10 @@ function deleteItem(id) {
 }
 
 function displayEditForm(id) {
-    const item = todos.find(item => item.id === id);
+    const item = todos.find(item => item.firstName === firstName);
 
-    document.getElementById('edit-name').value = item.name;
-    document.getElementById('edit-id').value = item.id;
+    document.getElementById('edit-name').value = item.lastName;
+    document.getElementById('edit-id').value = item.firstName;
     document.getElementById('edit-isComplete').checked = item.isComplete;
     document.getElementById('editForm').style.display = 'block';
 }
@@ -84,7 +96,7 @@ function _displayCount(itemCount) {
 }
 
 function _displayItems(data) {
-    const tBody = document.getElementById('todos');
+    const tBody = document.getElementById('people');
     tBody.innerHTML = '';
 
     _displayCount(data.length);
@@ -92,6 +104,12 @@ function _displayItems(data) {
     const button = document.createElement('button');
 
     data.forEach(item => {
+        console.log(item.firstName);
+        console.log(item.lastName);
+        console.log(item.email);
+        console.log(item.phone);
+
+        /*
         let isCompleteCheckbox = document.createElement('input');
         isCompleteCheckbox.type = 'checkbox';
         isCompleteCheckbox.disabled = true;
@@ -99,26 +117,45 @@ function _displayItems(data) {
 
         let editButton = button.cloneNode(false);
         editButton.innerText = 'Edit';
-        editButton.setAttribute('onclick', `displayEditForm(${item.id})`);
+        editButton.setAttribute('onclick', `displayEditForm(${item.firstName})`);
 
         let deleteButton = button.cloneNode(false);
         deleteButton.innerText = 'Delete';
-        deleteButton.setAttribute('onclick', `deleteItem(${item.id})`);
+        deleteButton.setAttribute('onclick', `deleteItem(${item.firstName})`);
+        */
 
         let tr = tBody.insertRow();
 
         let td1 = tr.insertCell(0);
-        td1.appendChild(isCompleteCheckbox);
+        let firstName = document.createTextNode(item.firstName);
+        td1.appendChild(firstName);
 
         let td2 = tr.insertCell(1);
-        let textNode = document.createTextNode(item.name);
-        td2.appendChild(textNode);
+        let lastName = document.createTextNode(item.lastName);
+        td2.appendChild(lastName);
 
         let td3 = tr.insertCell(2);
-        td3.appendChild(editButton);
+        let email  = document.createTextNode(item.email);
+        td3.appendChild(email);
 
         let td4 = tr.insertCell(3);
-        td4.appendChild(deleteButton);
+        let phone = document.createTextNode(item.phone);
+        td4.appendChild(phone);
+
+        let td5 = tr.insertCell(4);
+        let departement = document.createTextNode(item.departement);
+        td5.appendChild(departement);
+
+        var allTableCells = document.getElementsByTagName("td");
+
+        /*
+         for (var i = 0, max = allTableCells.length; i < max; i++) {
+            allTableCells[i].style.marginRight = "10px";
+        };
+        */
+        $(document).ready(function () {
+            $('#monTableau').DataTable();
+        });
     });
 
     todos = data;

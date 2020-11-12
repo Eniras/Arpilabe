@@ -24,7 +24,7 @@ namespace Arpilabe.Models
         [Required]
         public String Phone { get; set; }
 
-        [Required]
+        
         public String Note { get; set; }
 
         [Required]

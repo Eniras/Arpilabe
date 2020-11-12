@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>To-do CRUD</title>
-    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" type="text/css" href="DataTables/css/jquery.dataTables.min.css" />
+    <!--<link rel="stylesheet" href="css/site.css" /> -->
 </head>
 <body>
-    <h1>To-do CRUD</h1>
+    <h1>Bienvenue sur Arpilabe</h1>
     <h3>Add</h3>
     <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
-        <input type="text" id="add-name" placeholder="New to-do">
+        <input type="text" id="FirstName" placeholder="FirstName">
+        <input type="text" id="LastName" placeholder="LastName">
+        <input type="text" id="Mail" placeholder="Mail">
+        <input type="text" id="Phone" placeholder="Phone">
+        <input type="text" id="Department" placeholder="Department">
         <input type="submit" value="Add">
     </form>
 
@@ -26,17 +31,22 @@
 
     <p id="counter"></p>
 
-    <table>
-        <tr>
-            <th>Is Complete?</th>
-            <th>Name</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tbody id="todos"></tbody>
+    <table id="monTableau" class="display">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Departement</th>
+            </tr>
+        </thead>
+        <tbody id="people"></tbody>
     </table>
 
-    <script src="js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="DataTables/js/jquery.dataTables.min.js"></script>
+    <script src="service.js" asp-append-version="true"></script>
     <script type="text/javascript">
         getItems();
     </script>
