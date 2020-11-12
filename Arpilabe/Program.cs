@@ -49,7 +49,7 @@ namespace Arpilabe
                     logger.LogError(ex, "A database seeding error occurred.");
                 }
 
-
+               
 
             }
         }

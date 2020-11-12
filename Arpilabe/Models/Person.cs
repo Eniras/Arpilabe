@@ -36,7 +36,7 @@ namespace Arpilabe.Models
 
         [Required]
 
-        String[,] MyArray = new String[,]
+        readonly String[,] MyArray = new String[,]
         {
                 {"Marie", "Bresnu","marie.B@outlook.fr","0502010605","It"},
                 {"Sophie", "Grease", "S.Grease@gmail.fr","0954400232","It"},
@@ -60,7 +60,7 @@ namespace Arpilabe.Models
                 {"Amine","BenFaida","Amine@gmail.com","0502010605","It"}
         };
 
-            
+           
 
 
     }
