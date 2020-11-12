@@ -15,7 +15,7 @@ namespace Arpilabe.Data
             if (!context.Persons.Any())
             {
                 context.Persons.AddRange();
-                new Person
+                Person person = new Person
                 {
                     FirstName = "Sandrine",
                     LastName = "Chastaing",
@@ -24,8 +24,7 @@ namespace Arpilabe.Data
                     Departement = "IT",
                 };
 
-
-
+                context.Add(person);
 
                 context.SaveChanges();
             }
