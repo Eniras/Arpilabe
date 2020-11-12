@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <title>To-do CRUD</title>
     <link rel="stylesheet" type="text/css" href="DataTables/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="Bootstrap-4-4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <!--<link rel="stylesheet" href="css/site.css" /> -->
 </head>
 <body>
+
     <h1>Bienvenue sur Arpilabe</h1>
+
     <h3>Add</h3>
     <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
         <input type="text" id="FirstName" placeholder="FirstName">
@@ -15,10 +19,10 @@
         <input type="text" id="Mail" placeholder="Mail">
         <input type="text" id="Phone" placeholder="Phone">
         <input type="text" id="Department" placeholder="Department">
-        <input type="submit" value="Add">
+        <input type="submit" class="btn btn-success" value="Add">
     </form>
 
-    <div id="editForm">
+    <!-- <div id="editForm">
         <h3>Edit</h3>
         <form action="javascript:void(0);" onsubmit="updateItem()">
             <input type="hidden" id="edit-id">
@@ -28,27 +32,28 @@
             <a onclick="closeInput()" aria-label="Close">&#10006;</a>
         </form>
     </div>
+      -->
 
     <p id="counter"></p>
-
-    <table id="monTableau" class="display">
-        <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Departement</th>
-            </tr>
-        </thead>
-        <tbody id="people"></tbody>
-    </table>
-
-    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="DataTables/js/jquery.dataTables.min.js"></script>
-    <script src="service.js" asp-append-version="true"></script>
-    <script type="text/javascript">
-        getItems();
-    </script>
+    <div class="container-fluid blue">
+        <table id="monTableau" class="display">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Departement</th>
+                </tr>
+            </thead>
+            <tbody id="people"></tbody>
+        </table>
+        </div>
+        <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="DataTables/js/jquery.dataTables.min.js"></script>
+        <script src="service.js" asp-append-version="true"></script>
+        <script type="text/javascript">
+            getItems();
+        </script>
 </body>
-</html>
+    </html>
