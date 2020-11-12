@@ -15,6 +15,7 @@ namespace Arpilabe.Controllers
     public class PersonController : ControllerBase
 
     {
+        // Ajout du controleur
         private readonly ArpilabeContext _context;
 
             public PersonController (ArpilabeContext context)
@@ -26,14 +27,68 @@ namespace Arpilabe.Controllers
             public ActionResult<List<Person>> GetAll() =>
                 _context.Persons.ToList();
 
-            // GET by ID action
+        //Verbes d'action CRUD
 
-            // POST action
+        // GET by ID action lire
+            [HttpGet("{id}")]
+        public async Task<ActionResult<Person>> GetById (String id)
+        {
+            var person = await _context.Persons.FindAsync(id);
 
-            // PUT action
+            if (person == null)
+            {
+                return NotFound();
+            }
 
-            // DELETE action
-    
+            return person;
+        }
+
+        // POST action creer
+        [HttpPost]
+        public async Task<IActionResult> Create(Person person)
+        {
+            _context.Persons.Add(person);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetById), new { id = person.FirstName }, person);
+        }
+
+        // PUT action modifier
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(String id, Person person)
+        {
+            if (id != person.FirstName)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(person).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+
+
+        // DELETE action supprimer
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(String id)
+        {
+            var person = await _context.Persons.FindAsync(id);
+
+            if (person == null)
+            {
+                return NotFound();
+            }
+
+            _context.Persons.Remove(person);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+
     }
 }
 

@@ -12,9 +12,10 @@ namespace Arpilabe.Models
 {
     public class Person
     {
+        [Key]
         public String FirstName { get; set; }
 
-        [Key]
+        [Required]
         public string LastName { get; set; }
 
         [Required]
