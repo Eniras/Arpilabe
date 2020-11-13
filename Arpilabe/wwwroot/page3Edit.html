@@ -3,38 +3,33 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>To-do CRUD</title>
+    <title>Modifier</title>
     <link rel="stylesheet" type="text/css" href="DataTables/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="Bootstrap-4-4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <!--<link rel="stylesheet" href="css/site.css" /> -->
 </head>
-<body>
 
+<body style="background-color: #c7d6e6;">
 
-
-    <h1>Modifier les données</h1>
-
-    <h2>Veuiller sélectionner les informations à modifier</h2>
-
-
+    <h1><font face="Bookman Old Style, Book Antiqua, Garamond">Modifier les données</font></h1>
+    <h2><font face="Time new roman">Veuiller sélectionner les informations à modifier</font></h2>
+ 
     <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
         <input type="text" id="FirstName" placeholder="FirstName">
         <input type="text" id="LastName" placeholder="LastName">
         <input type="text" id="Mail" placeholder="Mail">
         <input type="text" id="Phone" placeholder="Phone">
-        <input type="text" id="Department" placeholder="Department">
+        <input type="text" id="Department " placeholder="Department">
         <input type="submit" class="btn btn-success" value="Add">
     </form>
 
-
-
-
-
-
-
+    <!--Mon Compteur de personne-->
     <p id="counter"></p>
+
+    <!--Mon tableau-->
     <div class="container-fluid blue">
+        <button id="boutton">Edite row </button>
         <table id="monTableau" class="display">
             <thead>
                 <tr>
@@ -48,6 +43,8 @@
             <tbody id="people"></tbody>
         </table>
 
+
+
         <!--Liens vers pages-->
         <button><a href="index.html">Dashboard</a> </button>
         <button><a href="page1View.html">View</a> </button>
@@ -57,10 +54,10 @@
     </div>
 
 
+
     <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="DataTables/js/jquery.dataTables.min.js"></script>
     <script src="service.js" asp-append-version="true"></script>
-    
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -71,7 +68,9 @@
                 }]
             });
 
-            $('button').click(function () {
+
+
+            $('#boutton').click(function () {
                 var data = table.$('input, select').serialize();
                 alert(
                     "The following data would have been submitted to the server: \n\n" +
@@ -79,8 +78,12 @@
                 );
                 return false;
             });
+
+
         });
+
         getItems();
+
     </script>
 </body>
 </html>

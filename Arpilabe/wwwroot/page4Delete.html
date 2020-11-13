@@ -2,17 +2,17 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>To-do CRUD</title>
+    <title>Supprimer</title>
     <link rel="stylesheet" type="text/css" href="DataTables/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="Bootstrap-4-4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <!--<link rel="stylesheet" href="css/site.css" /> -->
 </head>
-<body>
 
+<body style="background-color: #c7d6e6;">
 
+    <h1><font face="Bookman Old Style, Book Antiqua, Garamond">Supprimer une personne</font></h1>
 
-    <h1>Supprimer une personne</h1>
 
     <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
         <input type="text" id="FirstName" placeholder="FirstName">
@@ -24,13 +24,9 @@
     </form>
 
 
-
-    
-
-
-
     <p id="counter"></p>
     <div class="container-fluid blue">
+        <button id="bouton">Delete</button>
         <table id="monTableau" class="display">
             <thead>
                 <tr>
@@ -48,11 +44,11 @@
         <button><a href="index.html">Dashboard</a> </button>
         <button><a href="page1View.html">View</a> </button>
         <button><a href="page2Add.html">Add</a></button>
-        <button><a href="page4Delete.html">Delete</a></button>
+        <button><a href="page3Edit.html">Edit</a></button>
 
     </div>
 
-    
+
 
     <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="DataTables/js/jquery.dataTables.min.js"></script>
