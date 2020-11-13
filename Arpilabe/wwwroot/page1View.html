@@ -3,9 +3,27 @@
 <head>
     <meta charset="utf-8" />
     <title>Affichage Personne</title>
+    <link rel="stylesheet" type="text/css" href="DataTables/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="Bootstrap-4-4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!--<link rel="stylesheet" href="css/site.css" /> -->
 </head>
 <body>
-    
+    <h1>Afficher une personne</h1>
+
+    <h2>Pour afficher la personne veuiller entrer les informations dans la barre search</h2>
+
+    <!--<form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+        <input type="text" id="FirstName" placeholder="FirstName">
+        <input type="text" id="LastName" placeholder="LastName">
+        <input type="text" id="Mail" placeholder="Mail">
+        <input type="text" id="Phone" placeholder="Phone">
+        <input type="text" id="Department" placeholder="Department">
+        <input type="submit" class="btn btn-success" value="Add">
+    </form>
+        -->
+
+
     <p id="counter"></p>
     <div class="container-fluid blue">
         <table id="monTableau" class="display">
@@ -21,14 +39,21 @@
             <tbody id="people"></tbody>
         </table>
 
-
-
-
         <!--Liens vers pages-->
         <button><a href="index.html">Dashboard</a> </button>
         <button><a href="page2Add.html">Add</a></button>
         <button><a href="page3Edit.html">Edit</a></button>
         <button><a href="page4Delete.html">Delete</a></button>
 
+    </div>
+
+
+
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="DataTables/js/jquery.dataTables.min.js"></script>
+    <script src="service.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getItems();
+    </script>
 </body>
 </html>

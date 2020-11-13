@@ -20,7 +20,6 @@
     "Arpilabe": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "Arpilab",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
